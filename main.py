@@ -52,6 +52,7 @@ async def chat_completions(request: Request):
 
     body = await request.json()
     body["model"] = body.get("model") or DEFAULT_MODEL
+    body["stream"] = False 
 
     aad_token = get_aad_token()
 
@@ -64,7 +65,7 @@ async def chat_completions(request: Request):
         FOUNDRY_CHAT_URL,
         headers=headers,
         data=json.dumps(body),
-        timeout=120
+        timeout=30
     )
 
     if response.status_code >= 400:

@@ -1,0 +1,22 @@
+# Local development setup
+# Uses DefaultAzureCredential (az login) instead of Managed Identity
+#
+# Usage:
+#   1. az login
+#   2. Set your FOUNDRY_ENDPOINT in .env
+#   3. docker compose up
+
+services:
+  proxy:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - EXPECTED_API_KEY=dev-test-key-123
+      - FOUNDRY_ENDPOINT=${FOUNDRY_ENDPOINT}
+      - USE_MANAGED_IDENTITY=false
+      - REQUEST_TIMEOUT=120
+      # Mount Azure CLI credentials for DefaultAzureCredential
+    volumes:
+      - ~/.azure:/home/proxyuser/.azure:ro
+      - ./config.yaml:/app/config.yaml:ro

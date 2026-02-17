@@ -1,0 +1,29 @@
+# Foundry Proxy — Model Configuration
+# Add new models here. No code changes needed.
+#
+# Each model needs:
+#   endpoint:          The Foundry MaaS endpoint URL (from Azure portal)
+#   deployment:        The deployment/model name Foundry expects
+#   strip_think_tags:  Whether to filter <think>...</think> blocks (DeepSeek = true)
+#   max_tokens_default: Default max_tokens if client doesn't specify
+
+models:
+  DeepSeek-V3.2-Speciale:
+    endpoint: "${FOUNDRY_ENDPOINT}"  # Set via env var, or hardcode the full URL
+    deployment: "DeepSeek-V3.2-Speciale"
+    strip_think_tags: true
+    max_tokens_default: 4096
+
+  # --- Examples for future models ---
+  #
+  # Phi-4:
+  #   endpoint: "https://<your-phi-endpoint>.models.ai.azure.com"
+  #   deployment: "Phi-4"
+  #   strip_think_tags: false
+  #   max_tokens_default: 2048
+  #
+  # Meta-Llama-3.1-405B:
+  #   endpoint: "https://<your-llama-endpoint>.models.ai.azure.com"
+  #   deployment: "Meta-Llama-3.1-405B-Instruct"
+  #   strip_think_tags: false
+  #   max_tokens_default: 4096

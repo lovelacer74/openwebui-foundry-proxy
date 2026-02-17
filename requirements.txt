@@ -1,4 +1,5 @@
-fastapi==0.115.8
+fastapi==0.115.6
 uvicorn[standard]==0.34.0
-requests==2.32.3
-azure-identity==1.17.1
+httpx==0.28.1
+azure-identity==1.19.0
+pyyaml==6.0.2
